@@ -7,10 +7,13 @@ and flexibility:
 Run below commands
 1. `docker compose build --no-cache`
 2. `docker compose up -d`
+3. (optional for manual DB init) `docker compose exec php bin/console doctrine:migrations:migrate`
+
 
 Please make sure that you have installed docker and running daemon.
 <br>
 After that API will start at https://localhost:8080/docs
+and https://localhost/admin#/products
 
 ### Unit Tests
 
@@ -25,7 +28,7 @@ To run the tests:
 `docker compose exec php bin/phpunit tests/Api/`
 
 
-## E2E tests
+## E2E tests (cert issue, not ready yet)
 
 Projects supports some e2e tests by playwright
 
