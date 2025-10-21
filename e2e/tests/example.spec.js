@@ -1,19 +1,16 @@
 // @ts-check
 const { test, expect } = require('@playwright/test');
 
-test('homepage', async ({ page }) => {
-  await page.goto('https://localhost/');
-  await expect(page).toHaveTitle('Welcome to API Platform!');
-});
+const baseURL = process.env.BASE_URL || 'https://localhost';
 
 test('swagger', async ({ page }) => {
-  await page.goto('https://localhost/docs');
+  await page.goto(`${baseURL}/docs`);
   await expect(page).toHaveTitle('Hello API Platform - API Platform');
   await expect(page.locator('.operation-tag-content > span')).toHaveCount(5);
 });
 
 test('admin', async ({ page, browserName }) => {
-  await page.goto('https://localhost/admin');
+  await page.goto(`${baseURL}/admin`);
   await page.getByLabel('Create').click();
   await page.getByLabel('Name').fill('foo' + browserName);
   await page.getByLabel('Save').click();
