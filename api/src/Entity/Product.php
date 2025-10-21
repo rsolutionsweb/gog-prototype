@@ -14,6 +14,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ApiResource(
+    paginationItemsPerPage: 3,
     operations: [
         new Get(
             openapi: new Model\Operation(
